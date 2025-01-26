@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('D:/cap.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+            z-index: 1000;
+            border-bottom: none; /* Removed any border/underline */
+        }
+
+        nav .logo {
+            font-family: 'Roboto Slab', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: blue;
+            color: #fff;
+        }
+
+        .container {
+            position: relative;
+            top: 60px; /* Adds space below the fixed nav bar */
+            width: 100%;
+            height: calc(100vh - 60px);
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 20px;
+            padding-bottom: 50px; /* Ensure space for footer */
+        }
+
+        .slogan {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            background-color: white;
+            color: #000;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buttons button:hover {
+            background-color: blue;
+            color: #fff;
+        }
+
+        .about-us {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .about-us h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span>🎓</span> ScholarVault
+        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">ScholarMatch</a></li>
+            <li><a href="#">BenefitMeter</a></li>
+            <li><a href="#">DocVault</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="slogan">Empowering Students, Unlocking Opportunities, Shaping Your Destiny!</h1>
+        <div class="content">
+            <p>Looking for scholarships but don’t know where to start? We’ve got you covered! Our platform finds scholarships you qualify for, no more missed opportunities—just smarter, easier access to the financial support you deserve.</p>
+            <p>With detailed eligibility checks and an organized dashboard, you can confidently navigate through every step of your scholarship journey. Focus on your studies and let us handle the rest!</p>
+            <div class="buttons">
+                <button onclick="window.location.href='login.html'">Login/Sign up</button> <!-- Redirect to login page -->
+                
+            </div>
+        </div>
+        
+           
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 ScholarVault - All Rights Reserved.
+    </footer>
+</body>
+</html>

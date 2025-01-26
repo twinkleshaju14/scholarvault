@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #d4e0ff, #f3f7ff);
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            height: 90%;
+            max-height: 500px;
+            display: flex;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .form-container {
+            width: 50%;
+            height: 100%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.6s ease-in-out;
+            position: absolute;
+            top: 0;
+        }
+
+        .form-container.sign-up {
+            left: 0;
+            transform: translateX(-100%);
+        }
+
+        .form-container.login {
+            right: 0;
+            background-color: white; /* Set the background color of the login form to white */
+        }
+
+        .form-container.active {
+            transform: translateX(0);
+        }
+
+        .form-box {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-box .form-group {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .form-box label {
+            font-size: 18px;
+            color: black;
+            margin-right: 10px;
+            text-align: left;
+            width: 30%; /* Adjust the label width */
+        }
+
+        .form-box input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            color: black;
+            background-color: white;
+            width: 70%; /* Adjust the width of the input field */
+            text-align: center;
+        }
+
+        .form-box input::placeholder {
+            color: white;
+        }
+
+        .form-box button {
+            margin: 20px 0;
+            padding: 10px;
+            background: #000;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .form-box button:hover {
+            background: #333;
+        }
+
+        .overlay {
+            width: 50%;
+            height: 100%;
+            background: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.6s ease-in-out;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            clip-path: circle(75% at 50% 50%);
+        }
+
+        .overlay.active {
+            transform: translateX(100%);
+            clip-path: circle(75% at 50% 50%);
+        }
+
+        .overlay h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .overlay button {
+            padding: 10px;
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .overlay button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .form-container {
+                width: 100%;
+                position: static;
+                transform: translateX(0);
+            }
+
+            .overlay {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container sign-up" id="signUpForm">
+            <form class="form-box">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <div class="form-container login" id="loginForm">
+            <form class="form-box">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter Password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div class="overlay" id="overlay">
+            <h2 id="overlayText">Hello, Welcome!</h2>
+            <button id="toggleButton">Sign Up</button>
+        </div>
+    </div>
+
+    <script>
+        const signUpForm = document.getElementById('signUpForm');
+        const loginForm = document.getElementById('loginForm');
+        const overlay = document.getElementById('overlay');
+        const overlayText = document.getElementById('overlayText');
+        const toggleButton = document.getElementById('toggleButton');
+
+        toggleButton.addEventListener('click', () => {
+            if (overlay.classList.contains('active')) {
+                overlay.classList.remove('active');
+                signUpForm.classList.remove('active');
+                loginForm.classList.add('active');
+                overlayText.innerText = 'Hello, Welcome!';
+                toggleButton.innerText = 'Sign Up';
+            } else {
+                overlay.classList.add('active');
+                signUpForm.classList.add('active');
+                loginForm.classList.remove('active');
+                overlayText.innerText = 'Welcome Back!';
+                toggleButton.innerText = 'Login';
+            }
+        });
+    </script>
+</body>
+</html>
